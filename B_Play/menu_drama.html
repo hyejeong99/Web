@@ -1,0 +1,356 @@
+<!doctype html>
+<html>
+    <head>
+		<meta charset="utf-8">
+        <title>drama_page</title>
+		<link rel="stylesheet" href="jquery.lightbox-0.5.css">
+        <style>
+			/*검색창 색 지정*/
+            input::-ms-input-placehold{color: black;}
+            input::-webkit-input-placeholder{color: black;}
+            /*검색창&검색버튼 스타일*/
+            input{
+                font-size: 15px;
+                border: 0px;
+                height: 30px;
+                background: white;
+			}
+			/*배경색 흰색, 가운데정렬*/
+			body{
+				text-align: center;
+				background-color: white;
+        		background-attachment: scroll;
+			}
+			#text_left{
+				text-align: left;
+			}
+			#text_right{
+				text-align: right;
+			}
+			#text_leftS{/*글씨 왼쪽정렬, 사이즈 조절*/
+				text-align: left;
+				font-size: 20px;
+			}
+			select{/*콤보박스 스타*/
+				width: 200px; /* 원하는 너비설정 */
+				padding: .8em .5em; /* 여백으로 높이 설정 */
+				font-family: inherit; /* 폰트 상속 */ 
+				border: 1px solid #999; border-radius: 0px; /* iOS 둥근모서리 제거 */
+				-webkit-appearance: none; /* 네이티브 외형 감추기 */
+				-moz-appearance: none; appearance: none;
+
+			}
+			/*갤러리*/
+			div.item:nth-child(1){background-color: white;}
+			div.item:nth-child(2){background-color: white;}
+			div.item:nth-child(3){background-color: white;}
+			
+			
+			#result{
+				font-size: 20px;
+				color: gray;
+			}
+			/*맨 위로 이동하기*/
+			.scrollToTop{
+				width:50px;
+				height: 60px;
+				background-image:url('top.jpg');
+				position: fixed;
+				right: 30px;
+				bottom: 30px;
+				display: none;
+			}
+			#tG{
+				color: gray;
+			}
+			#textS{
+				font-size: 16px;
+			}
+			#plat_info{
+				font-size: 20px;
+				background-color: black;
+				color: white;
+			}
+        </style>
+		<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script type="text/javascript">
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+		//이벤트를 연결합니다.
+		$(document).ready(function(){
+			$('a.light').lightBox();
+        });
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+		//화살표 눌렀을 때 이벤트
+		$(document).ready(function(){
+                //첫 번째 ready 이벤트
+                //변수를 선언합니다.
+                var width=$('[data-role="slider"]').attr('data-width');
+                var height=$('[data-role="slider"]').attr('data-height');
+                var count=$('[data-role="slider"] div.item').length;
+
+                //스타일을 적용합니다.
+                $('[data-role="slider"]').css({
+                    position: 'relative',
+                    overflow: 'hidden',
+                    width: width,
+                    height: height
+                }).find('.container').css({
+                    position:'absolute',
+                    width: count*width,
+                    overflow: 'hidden'
+                }).find('.item').css({
+                    width: width,
+                    height: height,
+                    float: 'left'
+                });
+
+                //두 번째 ready 이벤트
+                //변수를 선언합니다.
+                var currentPage=0;
+                var changePage=function(){
+                    $('[data-role="slider"] > .container').animate({
+                        left: -currentPage*width
+                    }, 500);
+                };
+
+                //이벤트를 연결합니다.
+                $('#left-button').click(function(){
+                    if(currentPage>0){
+                        //왼쪽으로 이동
+                        currentPage=currentPage-1;
+                        changePage();
+                    }
+                });
+                $('#right-button').click(function(){
+                    if(currentPage<count-1){
+                        //오른쪽으로 이동
+                        currentPage=currentPage+1;
+                        changePage();
+                    }
+                });
+            });
+		//맨 위로 이동하는 스크립트
+		$(document).ready(function(){
+			//검사하기
+			$(window).scroll(function(){
+				if($(this).scrollTop()>100){
+					$('.scrollToTop').fadeIn();
+				}else{
+					$('.scrollToTop').fadeOut();
+				}
+			});
+			//맨 위로 이동하는 이벤트
+			$('scrollToTop').click(function(){
+				$('html, body').animate({scrollTop:0},800);
+				return false;
+			});
+		});
+    </script>
+	</head>
+    <body onLoad="MM_openBrWindow('popup.html','notice','width=400,height=500')">
+		<!--메인 로고 사진-->
+    <p id="text_left"><a href="p_2.html"><img src="main_logoBB.JPG" width="214" height="82" alt=""/></a>
+      <!--로고 사진-->
+      <img src="black.JPG" width="111" height="24" alt=""/>
+      <a href="menu_movie.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image3','','m_logoR.JPG',1)"><img src="m_logo.JPG" alt="" width="96" height="44" id="Image3"></a>
+      <img src="black_s.JPG" width="57" height="23" alt=""/>
+      <a href="menu_drama.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image5','','d_logoR.JPG',1)"><img src="d_logo.JPG" alt="" width="116" height="46" id="Image5"></a>
+      <img src="black_s.JPG" width="57" height="23" alt=""/>
+      <a href="menu_tv.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image7','','tv_logoR.JPG',1)"><img src="tv_logo.JPG" alt="" width="72" height="45" id="Image7"></a>
+      <img src="black_s.JPG" width="57" height="23" alt=""/><a href="menu_actor.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image10','','actor_logoR.JPG',1)"><img src="actor_logo.JPG" alt="" width="82" height="45" id="Image10"></a><!--검색창&검색버튼--><img src="black_s.JPG" width="57" height="23" alt=""/>
+      <!--<input type="text" title="검색" size="45" placeholder="영화, TV프로그램 어디있지?">
+    <input type="submit" value="검색">-->
+    <a href="menu_myP.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image9','','mP_logo2.png',1)"><img src="mP_logo3.png" alt="" width="50" height="50" id="Image9"></a></p>
+		<!--오늘의 추천-->
+		<p id="text_left"><img src="recommend.JPG" width="500" height="45" alt=""/></p>
+		<!--추천작 3개 -->
+		<div data-role="slider" data-width="900" data-height="350">
+            <div class="container">
+                <div class="item">
+                    <p><img src="start.jpeg" width="900" height="350"></p>
+                </div>
+                <div class="item">
+                    <p><img src="pent.jpeg" width="900" height="350"></p>
+                </div>
+                <div class="item">
+                    <p><img src="gumi.jpeg" width="900" height="350"></p>
+                </div>
+            </div>
+        </div>
+		<!--왼쪽, 오른쪽 버튼-->
+		<div id="text_left">
+			<input type="button" id="left-button" value="←">
+			<input type="button" id="right-button" value="→">
+		</div>
+		<!--검색 top3 이미지 -->
+		<p><img src="search_top3.JPG" width="450" height="45" alt=""/>
+			<!--검색 top3-->
+		<p>관심 있으면 사진을 클릭해보세요!                
+		<p><a href="#20age"><img src="20age.jpg" width="300" height="300" alt=""/></a><img src="black_s.JPG" width="112" height="37" alt=""/>
+		<a href="#secret"><img src="secret.jpg" width="300" height="300" alt=""/></a>
+        <img src="black_s.JPG" width="112" height="37" alt=""/><a href="#doctor"><img src="doctor.jpg" width="300" height="300" alt=""/></a>
+		<!--검색 창-->
+	<p>
+			<p><strong>드라마 이름</strong>
+		  		<input type="search" id="search" placeholder="    검색해주세요" onkeyup='printName()' onchange='printN()'>
+		  		<input type="button" value="검색">
+			</p>
+		</p>
+	<!--검색 결과 -->
+	<div id="result"><p><strong>.</strong></p></div>
+	<hr color="black">
+	<h1>드라마 검색 결과</h1>
+	<hr>
+	<h2 id="tG">별에서 온 그대</h2>
+	<p><img src="star.jpg" width="900" height="350" alt=""/>
+	  
+    </p>
+	<p><strong>편성</strong> SBS<br>
+	  <strong>방송</strong> 2013.12.18. ~ 2014.02.27. 21부작<br>
+    400년 전 지구에 떨어진 외계남 도민준과 왕싸가지 한류여신 톱스타 천송이의 기적과도 같은 달콤 발랄 로맨스</p>
+	<div id="plat_info">
+	<p>&nbsp;</p>
+	<p>●넷플릭스 : X</p>
+	<p>●왓챠 : X</p>
+	<p>●웨이브 : O</p>
+	<p>●유튜브 : X</p>
+	<p>&nbsp;</p>
+</div>
+	
+	<!--top3 정보-->
+	<div id="20age">
+		<hr color="black">
+		<h1>드라마 정보</h1>
+		<hr color="black">
+		<h2 id="tG">청춘기록</h2>
+		<h2><img src="20age.jpg" width="400" height="400" alt=""/></h2>
+		<h4>편성 2020.09.07. ~ 2020.10.27.</h4>
+<h4>출연 박보검(사혜준), 박소담(안정하), 변우석(원해효)</h4>
+<pre id="textS">누구에게나 청춘은 있다.
+어느시대나 청춘은 있다.
+시대마다 청춘의 특징은 있다.
+개발시대 청춘의 목표는 '위대한 인물이 되는 것' 이었다.
+
+그 시대엔 계층이동사다리가 튼튼하게 존재를 드러내고 있었다.
+전쟁의 폐허에서 거의 다 제로베이스에서 시작했으니까.
+지금 청춘들에겐 낯설다.
+갖고 태어나는 수저의 종류에 따라 인생이 달라진다고 생각한다.
+계층이동도 불가능하다고 여긴다.
+
+2017년 통계청 자료에 의하면, 우리사회 73.8%의 사람들이
+개인의 노력보다 집안 등 사회경제적 배경이
+성공에 더 중요하다고 생각한다.
+
+그 사회의 한 가운데 혜준이 있다. </pre>
+	</div>
+	<div id="secret">
+		<hr>
+		<h2 id="tG">비밀의 숲2</h2>
+		<h2><img src="secret.jpg" width="400" height="400" alt=""/></h2>
+		<h4>편성 2020.08.15 ~ 2020.10.04</h4>
+<h4>출연 조승우(황시목), 배두나(한여진), 최무성(우태하), 김영재(김사헌)</h4>
+<pre id="textS">이 드라마는 경찰과 검찰의 해묵은 수사권 논쟁에서 출발합니다.
+섣불리 둘 중에 한 쪽을 택할 순 없죠,
+속속들이 사정을 잘 아는 것도 아닌데다
+위험한 선택이 나올 수 있으니까요.
+
+그래도 한 가지, 기억되길 바라는 것이 있습니다. 
+모든 것은 과정이며 멈추는 순간 실패라는 믿음.
+
+꿈을 향해 달려가는 것, 진리를 좇아 매진하는 것,
+도리를 깨닫고자 나아가는 것은
+그 과정에서 무엇을 하든 과정 자체는 노력이지만
+멈추는 순간, 실패가 된다.
+
+변화를 향해 나아간다는 건,
+나의 발이 바늘이 되어 그 끝에 보이지 않는 실을 매달고
+쉼 없이 걷는 것과 같을 것입니다.
+지나온 모든 발걸음이 한 땀 한 땀입니다.
+내가 선택한 색깔의 실로 꿰매지고 있죠.
+삐뚤빼뚤, 뜨문뜨문, 그러다 쪽 고르기도 하고.</pre>
+	</div>
+	<div id="doctor">
+		<hr>
+		<h2 id="tG">슬기로운 의사생활</h2>
+		<h2><img src="doctor.jpg" width="400" height="400" alt=""/></h2>
+		<h4>편성 2020.03.12. ~ 2020.05.28.</h4>
+<h4>출연 조정석(이익준), 유연석(안정원), 정경호(김준완), 김대명(양석형), 전미도(채송화)</h4>
+<pre id="textS">한 사람, 한 사람의 '생로병사'가 모여, 수만 가지 이야기가 녹아 있는 곳. 
+탄생의 기쁨과 영원한 헤어짐의 전혀 다른 인사들이 공존하는 곳. 
+같은 병을 가진 것만으로 큰 힘이 되다 가도, 
+때론 누군가의 불행을 통해 위로를 얻기도 하는 아이러니 한 곳. 
+흡사 우리의 인생과 너무나도 닮아 있는 곳.
+바로 병원이다.
+
+그리고 그 병원을 지키는 평범한 의사들이 있다. 
+적당한 사명감과 기본적인 양심을 가진, 
+병원장을 향한 권력욕보단 허기진 배를 채우는 식욕이 앞서고, 
+슈바이처를 꿈꾸기보단, 내 환자의 안녕만을 챙기기도 버거운, 
+하루하루 그저 주어진 일에 충실한 5명의 평범한 의사들.
+
+이제 40살에 접어든 그들이
+각기 다른 인생의 형태를 한 채 다시 만난다. 
+그저 청춘을 함께한 친구여서 좋고,
+같은 고민을 나누는 것만으로도 위로인 그들. 
+전문의 10년 차에도 여전히 수술장 앞에선 긴장을 감추지 못하고,
+인생 40년 차에도 아직 성장통을 겪는 그들은,
+병원 안에서 배우고, 아프고, 성장한다. 
+
+언제부턴가, 따스함이 눈물겨워진 시대.
+[슬기로운 의사생활]은 작지만 따뜻하고,
+가볍지만 마음 한 켠을 묵직하게 채워 줄
+감동이 아닌 공감의 이야기를 전하고자 한다.</pre>
+	</div>
+
+	<!--페이지 정보-->
+	<div id="text_left">
+		<hr>
+		<h1>02-970-5114</h1>
+		<p>AM 10:00~PM 05:00 Off-time PM 12:00 ~ PM 2:00</p>
+			<p>DAY OFF (SATURDAY. SUNDAY, HOLIDAY)</p>
+	</div>
+	
+	<!--맨 위로 이동하기-->
+	<a href="#" class="scrollToTop"></a>
+	<!--sns-->
+	<p id="text_right"><img src="sns.JPG" width="187" height="68" alt=""/></p>
+	<!--notice-->
+	<div id="text_left">
+		<hr>
+		<h2>NOTICE</h2>
+		<p>[공지]기말과제</p>
+		<p>[공지]소프트웨어융합학과 3학년</p>
+		<p>[공지]A+받고싶다.</p>
+		<hr>
+		<pre id="text_leftS">밥&플레이			서비스			이용약관			고객센터			자주 묻는 질문			개인정보 처리 방침			이벤트
+
+대표이사:HYEJEONG RYU					사업자등록번호:99-0916
+
+위치:서울특별시 노원구 화랑로 서울여자대학교
+
+고객센터:ryu@swu.ac.kr
+
+이용권 문의:ryu@swu.ac.kr
+</pre>
+	</div>
+		
+</body>
+
+</html>

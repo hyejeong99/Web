@@ -1,0 +1,307 @@
+<!doctype html>
+<html>
+    <head>
+		<meta charset="utf-8">
+        <title>tv_page</title>
+		<link rel="stylesheet" href="jquery.lightbox-0.5.css">
+        <style>
+			/*검색창 색 지정*/
+            input::-ms-input-placehold{color: black;}
+            input::-webkit-input-placeholder{color: black;}
+            /*검색창&검색버튼 스타일*/
+            input{
+                font-size: 15px;
+                border: 0px;
+                height: 30px;
+                background: white;
+			}
+			/*배경색 흰색, 가운데정렬*/
+			body{
+				text-align: center;
+				background-color: white;
+        		background-attachment: scroll;
+			}
+			#text_left{
+				text-align: left;
+			}
+			#text_right{
+				text-align: right;
+			}
+			#text_leftS{
+				text-align: left;
+				font-size: 20px;
+			}
+			select{/*콤보박스 스타일 */
+				width: 200px; /* 원하는 너비설정 */
+				padding: .8em .5em; /* 여백으로 높이 설정 */
+				font-family: inherit; /* 폰트 상속 */ 
+				border: 1px solid #999; border-radius: 0px; /* iOS 둥근모서리 제거 */
+				-webkit-appearance: none; /* 네이티브 외형 감추기 */
+				-moz-appearance: none; appearance: none;
+
+			}
+			/*갤러리*/
+			div.item:nth-child(1){background-color: white;}
+			div.item:nth-child(2){background-color: white;}
+			div.item:nth-child(3){background-color: white;}
+			/*검색 결과 */
+			#result{
+				font-size: 20px;
+				color: gray;
+			}
+			/*맨 위로 이동하기*/
+			.scrollToTop{
+				width:50px;
+				height: 60px;
+				background-image:url('top.jpg');
+				position: fixed;
+				right: 30px;
+				bottom: 30px;
+				display: none;
+			}
+			#tG{
+				color: gray;
+			}
+			#textS{
+				font-size: 16px;
+			}
+			#plat_info{
+				font-size: 20px;
+				background-color: black;
+				color: white;
+			}
+        </style>
+		<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script type="text/javascript">
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+		//이벤트를 연결합니다.
+		$(document).ready(function(){
+			$('a.light').lightBox();
+        });
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+		//화살표 눌렀을 때 이벤트
+		$(document).ready(function(){
+                //첫 번째 ready 이벤트
+                //변수를 선언합니다.
+                var width=$('[data-role="slider"]').attr('data-width');
+                var height=$('[data-role="slider"]').attr('data-height');
+                var count=$('[data-role="slider"] div.item').length;
+
+                //스타일을 적용합니다.
+                $('[data-role="slider"]').css({
+                    position: 'relative',
+                    overflow: 'hidden',
+                    width: width,
+                    height: height
+                }).find('.container').css({
+                    position:'absolute',
+                    width: count*width,
+                    overflow: 'hidden'
+                }).find('.item').css({
+                    width: width,
+                    height: height,
+                    float: 'left'
+                });
+
+                //두 번째 ready 이벤트
+                //변수를 선언합니다.
+                var currentPage=0;
+                var changePage=function(){
+                    $('[data-role="slider"] > .container').animate({
+                        left: -currentPage*width
+                    }, 500);
+                };
+
+                //이벤트를 연결합니다.
+                $('#left-button').click(function(){
+                    if(currentPage>0){
+                        //왼쪽으로 이동
+                        currentPage=currentPage-1;
+                        changePage();
+                    }
+                });
+                $('#right-button').click(function(){
+                    if(currentPage<count-1){
+                        //오른쪽으로 이동
+                        currentPage=currentPage+1;
+                        changePage();
+                    }
+                });
+            });
+		//맨 위로 이동하는 스크립트
+		$(document).ready(function(){
+			//검사하기
+			$(window).scroll(function(){
+				if($(this).scrollTop()>100){
+					$('.scrollToTop').fadeIn();
+				}else{
+					$('.scrollToTop').fadeOut();
+				}
+			});
+			//맨 위로 이동하는 이벤트
+			$('scrollToTop').click(function(){
+				$('html, body').animate({scrollTop:0},800);
+				return false;
+			});
+		});
+    </script>
+	</head>
+    <body onLoad="MM_openBrWindow('popup.html','notice','width=400,height=500')">
+		<!--메인 로고 사진-->
+    <p id="text_left"><a href="p_2.html"><img src="main_logoBB.JPG" width="214" height="82" alt=""/></a>
+      <!--로고 사진-->
+      <img src="black.JPG" width="111" height="24" alt=""/>
+      <a href="menu_movie.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image3','','m_logoR.JPG',1)"><img src="m_logo.JPG" alt="" width="96" height="44" id="Image3"></a>
+      <img src="black_s.JPG" width="57" height="23" alt=""/>
+      <a href="menu_drama.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image5','','d_logoR.JPG',1)"><img src="d_logo.JPG" alt="" width="116" height="46" id="Image5"></a>
+      <img src="black_s.JPG" width="57" height="23" alt=""/>
+      <a href="menu_tv.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image7','','tv_logoR.JPG',1)"><img src="tv_logo.JPG" alt="" width="72" height="45" id="Image7"></a>
+      <img src="black_s.JPG" width="57" height="23" alt=""/><a href="menu_actor.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image10','','actor_logoR.JPG',1)"><img src="actor_logo.JPG" alt="" width="82" height="45" id="Image10"></a><img src="black_s.JPG" width="57" height="23" alt=""/>
+
+    <a href="menu_myP.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image9','','mP_logo2.png',1)"><img src="mP_logo3.png" alt="" width="50" height="50" id="Image9"></a></p>
+		<!--오늘의 추천-->
+		<p id="text_left"><img src="recommend.JPG" width="500" height="45" alt=""/></p>
+		<!--넘어가는 사진-->
+		<div data-role="slider" data-width="900" data-height="350">
+            <div class="container">
+                <div class="item">
+                    <p><img src="mmtg.jpeg" width="900" height="350"></p>
+                </div>
+                <div class="item">
+                    <p><img src="play.jpeg" width="900" height="350"></p>
+                </div>
+                <div class="item">
+                    <p><img src="1-2.jpeg" width="900" height="350"></p>
+                </div>
+            </div>
+        </div>
+		<!--왼쪽, 오른쪽 버튼 -->
+		<div id="text_left">
+			<input type="button" id="left-button" value="←">
+			<input type="button" id="right-button" value="→">
+		</div>
+		<!--검색 top3 이미지 -->
+		<p><img src="search_top3.JPG" width="450" height="45" alt=""/>
+		<!--검색 top3-->
+		<p>관심 있으면 사진을 클릭해보세요!
+        
+		<p><a href="#mmtg"><img src="mmtg.jpeg" width="300" height="300" alt=""/></a><img src="black_s.JPG" width="112" height="37" alt=""/>
+		<a href="#quiz"><img src="quiz.jpg" width="300" height="300" alt=""/></a>
+        <img src="black_s.JPG" width="112" height="37" alt=""/><a href="#sense"><img src="sense.jpeg" width="300" height="300" alt=""/></a>
+		<!--검색창-->
+	<p>
+			<p><strong>TV 프로그램 이름</strong>
+		  		<input type="search" id="search" placeholder="    검색해주세요" onkeyup='printName()' onchange='printN()'>
+		  		<input type="button" value="검색">
+    		</p>
+    	</p>
+	<!--검색 결과 -->
+	<div id="result"><p><strong>.</strong></p></div>
+	<hr color="black">
+		<h1>TV 프로그램 검색 결과</h1>
+	<hr>
+	<h2 id="tG">범인은 바로 너</h2>
+	<p><img src="you.jpeg" width="900" height="350" alt=""/>
+	  
+    </p>
+	<p><strong>편성</strong> 넷플릭스<br>
+	  <strong>방송</strong> 2019.11.08. ~ 2019.11.08. 10부작<br>
+    추리가 허당이라 손발이 바쁜 허당 탐정단의 본격 생고생 버라이어티</p>
+	<div id="plat_info">
+	<p>&nbsp;</p>
+	<p>●넷플릭스 : O</p>
+	<p>●왓챠 : X</p>
+	<p>●웨이브 : X</p>
+	<p>●유튜브 : X</p>
+	<p>&nbsp;</p>
+</div>
+<p>&nbsp;</p>
+	<!--top3 정보-->
+	<div id="mmtg">
+		<hr color="black">
+		<h1>TV 프로그램 정보</h1>
+		<hr color="black">
+		<h2 id="tG">문명특급</h2>
+		<h2><img src="mmtg.jpeg" width="400" height="400" alt=""/></h2>
+		<h4>편성 
+	    2018.02.01.</h4>
+		<h4>출연 재재</h4>
+		<pre id="textS">국내 최초 연반인(연예인+일반인) 재재의 신문물 전파 프로젝트
+세계 최초 빨간머리 MC 재재
+연예인이 하기 싫은 건 안 시키고 온갖 끼 부리는 건 MC 재재 담당!
+재재만의 말솜씨와 진행 능력에 빠져보세요
+		</pre>
+	</div>
+	<div id="quiz">
+		<hr>
+		<h2 id="tG">유 퀴즈 온 더 블럭</h2>
+		<h2><img src="quiz.jpg" width="400" height="400" alt=""/></h2>
+		<h4>편성 2018.08.29. ~ (수)</h4>
+	    <h4>출연 유재석, 조세호</h4>
+		<pre id="textS">큰 자기 유재석과 아기자기 조세호의 자기들 마음대로 떠나는 사람 여행!
+퀴즈를 맞추는 자기님들을 찾아 100만원을 드려요!
+오늘의 자기님은 누구?
+</pre>
+	</div>
+	<div id="sense">
+		<hr>
+		<h2 id="tG">식스센스</h2>
+		<h2><img src="sense.jpeg" width="400" height="400" alt=""/></h2>
+		<h4>편성 2020.09.03. ~ 2020.10.29.</h4>
+		<h4>출연 유재석, 오나라, 전소민, 제시, 미주</h4>
+		<pre id="textS">가짜는 오직 하나!
+		여섯 명의 출연진이 진짜 속에 숨어 있는
+진짜보다 더 진짜 같은 가짜를 찾는 예측 불허 육감 현혹 버라이어티</pre>
+	</div>
+
+		<!--정보-->
+	<div id="text_left">
+		<hr>
+		<h1>02-970-5114</h1>
+		<p>AM 10:00~PM 05:00 Off-time PM 12:00 ~ PM 2:00</p>
+			<p>DAY OFF (SATURDAY. SUNDAY, HOLIDAY)</p>
+	</div>
+	
+	<!--맨 위로 이동하기-->
+	<a href="#" class="scrollToTop"></a>
+	<!--sns-->
+	<p id="text_right"><img src="sns.JPG" width="187" height="68" alt=""/></p>
+	<!--notice-->
+	<div id="text_left">
+		<hr>
+		<h2>NOTICE</h2>
+		<p>[공지]기말과제</p>
+		<p>[공지]소프트웨어융합학과 3학년</p>
+		<p>[공지]A+받고싶다.</p>
+		<hr>
+		<pre id="text_leftS">밥&플레이			서비스			이용약관			고객센터			자주 묻는 질문			개인정보 처리 방침			이벤트
+
+대표이사:HYEJEONG RYU					사업자등록번호:99-0916
+
+위치:서울특별시 노원구 화랑로 서울여자대학교
+
+고객센터:ryu@swu.ac.kr
+
+이용권 문의:ryu@swu.ac.kr
+</pre>
+	</div>	
+</body>
+
+</html>

@@ -1,0 +1,198 @@
+<!doctype html>
+<html>
+    <head>
+		<meta charset="utf-8">
+        <title>my_page</title>
+		<link rel="stylesheet" href="jquery.lightbox-0.5.css">
+        <style>
+			/*배경색 흰색, 가운데정렬*/
+			body{
+				text-align: center;
+				background-color: white;
+        		background-attachment: scroll;
+			}
+			#text_left{
+				text-align: left;
+			}
+			#text_right{
+				text-align: right;
+			}
+			#text_leftS{
+				text-align: left;
+				font-size: 20px;
+			}
+			#add_sub {/*구독하고 있는 플랫폼 추가*/
+				text-align: center;
+				color: gray;
+				font-size: 15px;
+			}
+			select{/*콤보박스 스타*/
+				width: 200px; /* 원하는 너비설정 */
+				padding: .8em .5em; /* 여백으로 높이 설정 */
+				font-family: inherit; /* 폰트 상속 */ 
+				border: 1px solid #999; border-radius: 0px; /* iOS 둥근모서리 제거 */
+				-webkit-appearance: none; /* 네이티브 외형 감추기 */
+				-moz-appearance: none; appearance: none;
+
+			}
+			#plat_pay{
+				font-size: 25px;
+			}
+			
+        </style>
+		<script src="jquery.lightbox-0.5.js"></script>
+    <script type="text/javascript">
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+		//이벤트를 연결합니다.
+		$(document).ready(function(){
+			$('a.light').lightBox();
+        });
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+		
+    </script>
+	</head>
+    <body onLoad="MM_openBrWindow('popup.html','notice','width=400,height=500')">
+		<!--메인 로고 사진-->
+    <p id="text_left"><a href="p_2.html"><img src="main_logoBB.JPG" width="214" height="82" alt=""/></a>
+      <!--로고 사진-->
+      <img src="black.JPG" width="111" height="24" alt=""/>
+      <a href="menu_movie.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image3','','m_logoR.JPG',1)"><img src="m_logo.JPG" alt="" width="96" height="44" id="Image3"></a>
+      <img src="black_s.JPG" width="57" height="23" alt=""/>
+      <a href="menu_drama.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image5','','d_logoR.JPG',1)"><img src="d_logo.JPG" alt="" width="116" height="46" id="Image5"></a>
+      <img src="black_s.JPG" width="57" height="23" alt=""/>
+      <a href="menu_tv.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image7','','tv_logoR.JPG',1)"><img src="tv_logo.JPG" alt="" width="72" height="45" id="Image7"></a>
+      <img src="black_s.JPG" width="57" height="23" alt=""/><a href="menu_actor.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image10','','actor_logoR.JPG',1)"><img src="actor_logo.JPG" alt="" width="82" height="45" id="Image10"></a><img src="black_s.JPG" width="57" height="23" alt=""/>
+
+    <a href="menu_myP.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image9','','mP_logo2.png',1)"><img src="mP_logo3.png" alt="" width="50" height="50" id="Image9"></a></p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+		<!--플랫폼 별 구독 비용 -->
+    <p><img src="pay_month.JPG" width="350" height="50" alt=""/></p>
+    <p id="plat_pay"><a href="https://www.youtube.com/"><img src="youtube_logo.jpeg" width="350" height="150" alt=""/></a><strong>유튜브 프리미엄</strong> ₩9,500<img src="black.JPG" width="52" height="33" alt=""/> <a href="https://www.netflix.com/kr/"><img src="netflix_logo.png" width="500" height="150" alt=""/></a> <strong>넷플릭스</strong> ₩9,500~₩14,500</p>
+    <p id="plat_pay"><a href="https://watcha.com/home"><img src="watcha_logo.jpeg" width="700" height="150" alt=""/></a> <strong>왓챠</strong> ₩7,900~12,900<img src="black.JPG" width="50" height="33" alt=""/><a href="https://www.wavve.com/"><img src="wavve_logo.jpeg" width="450" height="130" alt=""/></a><strong>웨이브</strong> ₩100~₩14,000	</p>
+		<!--구독하고 있는 플랫폼 목록 -->
+		<hr>
+    <p><img src="sub_plat.JPG" width="590" height="46" alt=""/></p>
+    <p id="add_sub"><strong>구독하고 있는 플랫폼을 추가해주세요</strong></p>
+		<!--콤보박스-->
+<div>
+	  <strong>플랫폼</strong>
+<select id="plat" onchange="alert_select_value(this);">
+	<option value="netflix">넷플릭스 </option>
+	<option value="watcha">왓챠</option>
+	<option value="wavve">웨이브</option>
+	<option value="youtube">유튜브</option>
+</select>
+<strong>결제일</strong>
+<select id="money" onchange="alert_select_value(this);">
+  <option value="m1">1일</option>
+  <option value="m2">2일</option>
+  <option value="m3">3일</option>
+  <option value="m4">4일</option>
+  <option value="m5">5일</option>
+  <option value="m6">6일</option>
+  <option value="m7">7일</option>
+  <option value="m8">8일</option>
+  <option value="m9">9일</option>
+  <option value="m10">10일</option>
+  <option value="m11">11일</option>
+  <option value="m12">12일</option>
+  <option value="m13">13일</option>
+  <option value="m14">14일</option>
+  <option value="m15">15일</option>
+  <option value="m16">16일</option>
+  <option value="m17">17일</option>
+  <option value="m18">18일</option>
+  <option value="m19">19일</option>
+  <option value="m20">20일</option>
+  <option value="m21">21일</option>
+  <option value="m22">22일</option>
+  <option value="m23">23일</option>
+  <option value="m24">24일</option>
+  <option value="m25">25일</option>
+  <option value="m26">26일</option>
+  <option value="m27">27일</option>
+  <option value="m28">28일</option>
+  <option value="m29">29일</option>
+  <option value="m30">30일</option>
+  <option value="m31">31일</option>
+</select>
+	<button class="btn" style="height:35px; width:50px;" >선택</button>
+	<p>
+			<span id="html_txt">.</span>
+		</p>
+
+	</div>
+		<hr color="black">
+		<!--다음 결제 -->
+		  <p><img src="next_pay.JPG" width="280" height="40" alt=""/></p>
+		  <p id="plat_pay"><img src="youtube_logo.jpeg" width="450" height="200" alt=""/><strong>D-14</strong></p>
+		  <p id="plat_pay"><img src="netflix_logo.png" width="500" height="150" alt=""/><strong>D-10</strong></p>
+		<hr color="black">
+		  <p><img src="total_coast.JPG" width="250" height="45" alt=""/></p>
+		  <p id="plat_pay"><strong>₩19,000</strong></p>
+		<!--정보-->
+	<div id="text_left">
+		<hr>
+		<h1>02-970-5114</h1>
+		<p>AM 10:00~PM 05:00 Off-time PM 12:00 ~ PM 2:00</p>
+			<p>DAY OFF (SATURDAY. SUNDAY, HOLIDAY)</p>
+	</div>
+	<!--sns-->
+	<p id="text_right"><img src="sns.JPG" width="187" height="68" alt=""/></p>
+	<!--notice-->
+	<div id="text_left">
+		<hr color="black">
+		<h2>NOTICE</h2>
+		<p>[공지]기말과제</p>
+		<p>[공지]소프트웨어융합학과 3학년</p>
+		<p>[공지]A+받고싶다.</p>
+		<hr>
+	</div>
+		<pre id="text_leftS">밥&플레이			서비스			이용약관			고객센터			자주 묻는 질문			개인정보 처리 방침			이벤트
+
+대표이사:HYEJEONG RYU					사업자등록번호:99-0916
+
+위치:서울특별시 노원구 화랑로 서울여자대학교
+
+고객센터:ryu@swu.ac.kr
+
+이용권 문의:ryu@swu.ac.kr
+</pre>
+</body>
+<script>
+	var alert_select_value = function (select_obj){
+            // 우선 selectbox에서 선택된 index를 찾고 
+            var selected_index = select_obj.selectedIndex;
+            // 선택된 index의 value를 찾고 
+            var selected_value = select_obj.options[selected_index].value;
+            // 원하는 동작을 수행한다. 여기서는 그냥 alert해주는 식으로만 처리함. 
+            alert(selected_value);
+        };
+	
+	//버튼 눌렀을 때
+	$(document).ready(function(){
+		$("button").click(function({
+			$("#html_txt").html("change");
+		}));
+	});
+
+</script>
+</html>

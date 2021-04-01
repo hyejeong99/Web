@@ -1,0 +1,154 @@
+<!doctype html>
+<html>
+    <head>
+		<meta charset="utf-8">
+        <title>main_page</title>
+		<link rel="stylesheet" href="jquery.lightbox-0.5.css">
+        <style>
+            /*글씨 가운데 정렬*/
+            #text_center{
+				text-align: center;
+            }
+
+			#text_left{
+				text-align: left;
+			}
+			#text_right{
+				text-align: right;
+			}
+			#text_leftS{
+				text-align: left;
+				font-size: 20px;
+			}
+			#bplay_ad{
+				background-color: black;
+				color: white;
+				text-align: center;
+				font-size: 40px;
+			}
+			/*맨 위로 이동하기*/
+			.scrollToTop{
+				width:50px;
+				height: 60px;
+				background-image:url('top.jpg');
+				position: fixed;
+				right: 30px;
+				bottom: 30px;
+				display: none;
+			}
+        </style>
+		<script src="jquery.lightbox-0.5.js" type="text/javascript"></script>
+    <script type="text/javascript">
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+		//이벤트를 연결합니다.
+		$(document).ready(function(){
+			$('a.light').lightBox();
+        });
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+		//맨 위로 이동하는 스크립트
+		$(document).ready(function(){
+			//검사하기
+			$(window).scroll(function(){
+				if($(this).scrollTop()>100){
+					$('.scrollToTop').fadeIn();
+				}else{
+					$('.scrollToTop').fadeOut();
+				}
+			});
+			//맨 위로 이동하는 이벤트
+			$('scrollToTop').click(function(){
+				$('html, body').animate({scrollTop:0},800);
+				return false;
+			});
+		});
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+    </script>
+    </head>
+    <!--로고 사진-->
+    <!--메뉴 사진들(롤오버)-->
+    <body onLoad="MM_openBrWindow('popup.html','notice','width=400,height=500');MM_preloadImages('back_uhR.JPG')"><!--로고 사진 끝-->
+    <p><a href="p_2.html"><img src="main_logoBB.JPG" width="214" height="82" alt=""/></a>
+      
+      <img src="black.JPG" width="111" height="24" alt=""/>
+      <a href="menu_movie.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image3','','m_logoR.JPG',1)"><img src="m_logo.JPG" alt="" width="120" height="44" id="Image3"></a>
+      <img src="black_s.JPG" width="57" height="23" alt=""/>
+      <a href="menu_drama.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image5','','d_logoR.JPG',1)"><img src="d_logo.JPG" alt="" width="135" height="46" id="Image5"></a>
+      <img src="black_s.JPG" width="57" height="23" alt=""/>
+      <a href="menu_tv.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image7','','tv_logoR.JPG',1)"><img src="tv_logo.JPG" alt="" width="65" height="45" id="Image7"></a>
+      <img src="black_s.JPG" width="57" height="23" alt=""/><a href="menu_actor.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image10','','actor_logoR.JPG',1)"><img src="actor_logo.JPG" alt="" width="110" height="45" id="Image10"></a><!--검색창&검색버튼--><img src="black_s.JPG" width="57" height="23" alt=""/>
+      <!--<input type="text" title="검색" size="45" placeholder="영화, TV프로그램 어디있지?">
+    <input type="submit" value="검색">-->
+    <a href="menu_myP.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image9','','mP_logo2.png',1)"><img src="mP_logo3.png" alt="" width="50" height="50" id="Image9"></a></p>
+    <p>&nbsp;</p>
+    <div id="text_center">
+        <img src="recommend.jpg" width="500">
+    </div>
+    <!--롤오버 이미지-->
+    <!--3개의 오늘의 추천작-->
+		<div id="text_center">
+			<p><a href="die.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('die','','back_dieR.jpeg',1)" class="item"><img src="back_die.jpeg" alt="" width="1100" height="500" id="die" ></a>
+			  <a href="uh.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('uhee','','back_uhR.JPG',1)" class="item"><img src="back_uh.jpeg" alt="" width="1100" height="500" id="uhee"></a><a href="samjin.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('samjin','','back_samR.jpeg',1)" class="item"><img src="back_sam.jpeg" alt="" width="1100" height="500" id="samjin"></a></p>
+    </div>
+		<div id="bplay_ad">
+			<p>Let's start BPlay</p>
+		</div>
+		<!--플랫폼 사진, 누르면 이동-->
+		<div id="text_left">
+		  <h1>Moved to the platform below</h1>
+
+		  <p><a href="https://www.netflix.com/kr/" target="_blank"><img src="netflix_logo.png" width="450" height="200" alt=""/></a><a href="https://www.youtube.com/" target="_blank"><img src="youtube_logo.jpeg" width="450" height="200" alt=""/></a><a href="https://watcha.com/home" target="_blank"><img src="watcha_logo.jpeg" width="450" height="200" alt=""/></a><a href="https://www.wavve.com/"><img src="wavve_logo.jpeg" width="460" height="200" alt=""/></a></p>
+		  <hr>
+			<!--페이지 정보-->
+		  <h1>02-970-5114</h1>
+		<p>AM 10:00~PM 05:00 Off-time PM 12:00 ~ PM 2:00</p>
+			<p>DAY OFF (SATURDAY. SUNDAY, HOLIDAY)</p>
+		</div>
+		<!--맨 위로 이동하기-->
+		<a href="#" class="scrollToTop"></a>
+		<!--sns 사진 -->
+		<p id="text_right"><img src="sns.JPG" width="187" height="68" alt=""/></p>
+			<hr>
+		<!--공지-->
+		<div id="text_left">
+			<h2>NOTICE</h2>
+			<p>[공지]기말과제</p>
+			<p>[공지]소프트웨어융합학과 3학년</p>
+			<p>[공지]A+받고싶다.</p>
+		</div>
+		  <!--페이지 이용약관-->
+			<hr>
+			<pre id="text_leftS">밥&플레이			서비스			이용약관			고객센터			자주 묻는 질문			개인정보 처리 방침			이벤트
+
+대표이사:HYEJEONG RYU					사업자등록번호:99-0916
+
+위치:서울특별시 노원구 화랑로 서울여자대학교
+
+고객센터:ryu@swu.ac.kr
+
+이용권 문의:ryu@swu.ac.kr
+</pre>
+
+
+</body>
+</html>
